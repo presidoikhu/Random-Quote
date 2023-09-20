@@ -80,7 +80,7 @@
 // Define an array of colors
 const colors = ["#007bff", "#6c757d", "#28a745", "#dc3545", "#ffc107", "#17a2b8"];
 
-// Get references to the DOM elements
+// Get references to the elements
 const quoteContainer = document.getElementById("quote-container");
 const quoteText = document.getElementById("quote");
 const generateButton = document.getElementById("generate-button");
@@ -97,7 +97,7 @@ function getRandomColor() {
 
 // Function to set the background color of the body
 function setBackgroundColor(color) {
-  document.body.style.backgroundColor = color;
+  quoteContainer.style.backgroundColor = color;
 }
 
 // Function to display a new quote and set the background color
@@ -115,6 +115,8 @@ generateButton.addEventListener("click", generateNewQuote);
 // Generate a random quote and set the background color on page load
 generateNewQuote();
 
+
+//https://presidoikhu.github.io/Random-Quote/
     </script>
 </body>
 </html>
