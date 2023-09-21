@@ -3,15 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote Generator</title>
+    <title>Random Quote Generator</title>
     <style>
         /* CSS styles go here */
         body {
@@ -44,79 +36,59 @@
             color: #fff;
             border: none;
         }
+        #name {
+            font-size: 20px;
+            margin-left: 200px;
+        }
     </style>
 </head>
 <body>
     <div id="quote-container">
         <p id="quote">Loading... </p>
+        <span id="name"></span>
         <p><button id="generate-button">Generate New Quote</button></p>
     </div>
-
     <script>
-        //  an array of quotes
-        const quotes = [
-  "The greatest glory in living lies not in never falling, but in rising every time we fall. -Nelson Mandela",
-  "The way to get started is to quit talking and begin doing. -Walt Disney",
-  "Your time is limited, don't waste it living someone else's life. -Steve Jobs",
-  "If life were predictable it would cease to be life, and be without flavor. -Eleanor Roosevelt",
-  "If you look at what you have in life, you'll always have more. -Oprah Winfrey",
-  "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success. -James Cameron",
-  "Life is what happens when you're busy making other plans. -John Lennon",
-  "Spread love everywhere you go. Let no one ever come to you without leaving happier. -Mother Teresa",
-  "When you reach the end of your rope, tie a knot in it and hang on. -Franklin D. Roosevelt",
-  "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart. -Helen Keller",
-  "I can't change the direction of the wind, but I can adjust my sails to always reach my destination. -Jimmy Dean",
-  "Believe you can and you're halfway there. -Theodore Roosevelt",
-  "Try to be a rainbow in someone's cloud. -Maya Angelou",
-  "Find a place inside where there's joy, and the joy will burn out the pain. -Joseph Campbell",
-  "You will face many defeats in life, but never let yourself be defeated. -Maya Angelou",
-  "In the end, it's not the years in your life that count. It's the life in your years. -Abraham Lincoln",
-  "Life is like riding a bicycle. To keep your balance, you must keep moving. -Albert Einstein",
-  "The only way to do great work is to love what you do. -Steve Jobs",
-  "Success is not final, failure is not fatal: It is the courage to continue that counts. -Winston S. Churchill",
-  "You miss 100% of the shots you don't take. -Wayne Gretzky"
-];
+      const quotes = [
+      ["The greatest glory in living lies not in never falling, but in rising every time we fall", "Nelson Mandela"],
+      ["The way to get started is to quit talking and begin doing.", "Walt Disney"],
+      ["Your time is limited, don't waste it living someone else's life.", " Steve Jobs"],
+      ["If life were predictable it would cease to be life, and be without flavor.", "Eleanor Roosevelt"],
+      ["If you look at what you have in life, you'll always have more.", "Oprah Winfrey"],
+      ["If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.", "James Cameron"],
+      ["Life is what happens when you're busy making other plans.", "John Lennon"],
+      ["Spread love everywhere you go. Let no one ever come to you without leaving happier.", "Mother Teresa"],
+      ["When you reach the end of your rope, tie a knot in it and hang on.", "Franklin D. Roosevelt"],
+      ["The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart.", " Helen Keller"],
+      ["I can't change the direction of the wind, but I can adjust my sails to always reach my destination.", "Jimmy Dean"],
+      ["Believe you can and you're halfway there.", "Theodore Roosevelt"],
+      ["Try to be a rainbow in someone's cloud.", "Maya Angelou"],
+      ["Find a place inside where there's joy, and the joy will burn out the pain.", " Joseph Campbell"],
+      ["You will face many defeats in life, but never let yourself be defeated. ", "Maya Angelou"],
+      ["In the end, it's not the years in your life that count. It's the life in your years.", "Abraham Lincoln"],
+      ["Life is like riding a bicycle. To keep your balance, you must keep moving.", "Albert Einstein"],
+      ["The only way to do great work is to love what you do.", "Steve Jobs"],
+      ["Success is not final, failure is not fatal: It is the courage to continue that counts.", " Winston S. Churchill"],
+      ["You miss 100% of the shots you don't take.", " Wayne Gretzky"]
+    ];
 
-// Define an array of colors
-const colors = ["#007bff", "#6c757d", "#28a745", "#dc3545", "#ffc107", "#17a2b8"];
+        const colors = ["#007bff", "#6c757d", "#28a745", "#dc3545", "#ffc107", "#17a2b8"];
+        let randomQuote = Math.floor(Math.random() * quotes.length);
+        let quote = document.getElementById("quote");
+        let randomColor = Math.floor(Math.random() * colors.length);
+        let btn = document.getElementById("generate-button");
+        let name = document.getElementById("name");
 
-// Get references to the elements
-const quoteContainer = document.getElementById("quote-container");
-const quoteText = document.getElementById("quote");
-const generateButton = document.getElementById("generate-button");
+    
+        quote.innerHTML = quotes[randomQuote][0];
+        name.innerHTML = quotes[randomQuote][1];
+        document.body.style.backgroundColor = colors[randomColor];
 
-// Function to get a random quote from the quotes array
-function getRandomQuote() {
-  return quotes[Math.floor(Math.random() * quotes.length)];
-}
+        btn.addEventListener("click", display);
 
-// Function to get a random color from the colors array
-function getRandomColor() {
-  return colors[Math.floor(Math.random() * colors.length)];
-}
-
-// Function to set the background color of the body
-function setBackgroundColor(color) {
-  quoteContainer.style.backgroundColor = color;
-}
-
-// Function to display a new quote and set the background color
-function generateNewQuote() {
-  const randomQuote = getRandomQuote();
-  const randomColor = getRandomColor();
-  
-  quoteText.textContent = randomQuote;
-  setBackgroundColor(randomColor);
-}
-
-// Event listener for the Generate New Quote button
-generateButton.addEventListener("click", generateNewQuote);
-
-// Generate a random quote and set the background color on page load
-generateNewQuote();
-
-
-//https://presidoikhu.github.io/Random-Quote/
+        function display() {
+            location.reload();
+        }
     </script>
 </body>
 </html>
